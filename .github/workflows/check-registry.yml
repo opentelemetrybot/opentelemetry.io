@@ -6,10 +6,8 @@ on:
     # Make sure this only runs when registry entries are touched.
     paths:
       - 'data/registry/**'
-
 permissions:
   contents: read
-
 jobs:
   registry-validation:
     name: REGISTRY validation

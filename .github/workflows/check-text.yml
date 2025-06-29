@@ -3,10 +3,8 @@ name: Linter
 on:
   merge_group:
   pull_request:
-
 permissions:
   contents: read
-
 jobs:
   text-linter:
     name: TEXT linter
