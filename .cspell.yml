@@ -65,4 +65,5 @@ words: # Valid words across all locales
   - htmltest
   - jsonify
   - opentelemetrybot
+  - otelbot
   - warnf
