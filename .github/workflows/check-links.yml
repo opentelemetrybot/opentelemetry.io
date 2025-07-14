@@ -96,7 +96,7 @@ jobs:
         #   echo "Failing workflow so that changes can be reviewed, and checks rerun."
         #   exit 1
         # env:
-        #   GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+        #   GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
   check-refcache:
     name: REFCACHE updates?
