@@ -84,7 +84,7 @@ message="Update $repo version to $latest_version"
 body="Update $repo version to \`$latest_version\`.
 
 See https://github.com/open-telemetry/$repo/releases/tag/$latest_version."
-branch="opentelemetrybot/auto-update-$repo-$latest_version"
+branch="otelbot/auto-update-$repo-$latest_version"
 
 echo "Looking for existing PRs with branch '$branch'."
 existing_pr_all=$(gh pr list --state all --head "$branch")
