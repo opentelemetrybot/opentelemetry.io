@@ -16,6 +16,12 @@ jobs:
     # Remove the if statement below when testing against a fork
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
+      - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -32,19 +38,19 @@ jobs:
         working-directory: ./scripts/generate-community-data
         run: node generate.js ../../data/community/members.yaml
         env:
-          GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
           add-paths: 'data/community/members.yaml'
           author:
-            opentelemetrybot
-            <107717825+opentelemetrybot@users.noreply.github.com>
+            otelbot
+            <197425009+otelbot@users.noreply.github.com>
           committer:
-            opentelemetrybot
-            <107717825+opentelemetrybot@users.noreply.github.com>
-          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+            otelbot
+            <197425009+otelbot@users.noreply.github.com>
+          token: ${{ steps.otelbot-token.outputs.token }}
           branch: update-community-members
           title: Update community members
           body: |
