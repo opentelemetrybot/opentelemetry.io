@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write # required for pushing changes
 
 env:
   REPO: opentelemetry-specification
